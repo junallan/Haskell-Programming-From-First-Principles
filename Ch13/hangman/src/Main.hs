@@ -15,7 +15,7 @@ main = do
   runGame puzzle
 
 type WordList = [String]
-  
+--refactor to below  
 -- newtype WordList = 
 --   WordList [String]
 --   deriving (Eq, Show)
