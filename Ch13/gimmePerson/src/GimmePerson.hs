@@ -1,6 +1,6 @@
 module GimmePerson where
 
-import Data.Either(isRight)
+import Data.Either(isRight, fromRight)
 
 type Name = String
 type Age = Integer
@@ -34,8 +34,8 @@ gimmePerson = do
   putStr "Age:"
   ageString <- getLine
   let age = read ageString :: Integer
-  if isRight $ mkPerson userName age 
-  then putStrLn $ "Yay!  Successfully got a person: " ++  userName ++ " who is " ++ ageString ++ " years old."
-  else putStrLn "Error is"
-  
+  let person = mkPerson userName age
+  case person of 
+    Right x  -> putStrLn $ "Yay!  Successfully got a person: " ++ (show x)
+    Left  x -> putStrLn $ "Whoops " ++ (show x)
 
