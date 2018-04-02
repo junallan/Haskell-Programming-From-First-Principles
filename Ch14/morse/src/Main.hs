@@ -37,9 +37,7 @@ convertFromMorse = forever $ do
   where
     convertLine line = do
       let decoded :: Maybe String
-        decoded =
-          traverse morseToChar
-            (words line)
+          decoded = traverse morseToChar (words line)
       case decoded of
         (Just s) -> putStrLn s
         Nothing  -> do
@@ -54,11 +52,12 @@ main = do
       case arg of
         "from" -> convertFromMorse
         "to"   -> convertToMorse
-        -      -> argError
+        _      -> argError
     _ -> argError
-    where argError = do
-      putStrLn "Please specify the first argument as being 'from' or 'to' morse, such as: morse to"
-      exitFailure
+    where 
+      argError = do
+        putStrLn "Please specify the first argument as being 'from' or 'to' morse, such as: morse to"
+        exitFailure
 
 
 
