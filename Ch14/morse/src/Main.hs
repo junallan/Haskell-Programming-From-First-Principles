@@ -7,6 +7,8 @@ import Morse (stringToMorse, morseToChar)
 import System.Environment (getArgs)
 import System.Exit (exitFailure, exitSuccess)
 import System.IO (hGetLine, hIsEOF, stdin)
+import Test.QuickCheck
+
 
 convertToMorse :: IO ()
 convertToMorse = forever $ do
